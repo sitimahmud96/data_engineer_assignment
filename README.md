@@ -129,9 +129,16 @@ The visualization or reporting tool will use Metabase, as it has a good integrat
 
 ## Create Data Visualization based on the created Star Schema
 
+The code to generate the visualization is here [create_visualization.py](create_visualization.py)
 1. Weekly Rental Trends
     
    Number of rentals aggregated weekly
    ![Alt text](images/rental_trends.jpeg?raw=true "Title")
 
-2. 
+2. Top 10 Cities by Customer Count
+    ![Alt text](images/top_city.jpg?raw=true "Title")
+
+3. Sales by Staff
+    
+    (Apparently dataset only has 2 staff)
+    ![Alt text](images/sales_by_staff.jpg?raw=true "Title")

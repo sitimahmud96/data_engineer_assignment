@@ -10,7 +10,7 @@
 
     Tested on Windows
 
-3. It might take a while for the containers to be ready, visit [http://locahost:8080](http://localhost:8080) (user: airflow pass: airflow) for the Airflow Webserver. First turn on the dim tables and if it runs succesfuly turn on the fact tables.
+3. It might take ~5 minutes for the containers to be ready, visit [http://locahost:8080](http://localhost:8080) (user: airflow pass: airflow) for the Airflow Webserver. First turn on the dim tables and if it runs succesfuly turn on the fact tables.
 
 ![Alt text](../images/dims.jpg?raw=true "Title")
 
