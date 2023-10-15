@@ -1,4 +1,31 @@
-#  Create sample queries that demonstrate the difference between origin schema vs star schema for the same output.
+Tasks:
+1. [Use the data source above, please create a Star schema of the Origin Sakila Database.](#use-the-data-source-above-please-create-a-star-schema-of-the-origin-sakila-database)
+
+2. [From the star schema that you created in no 1, please create an airflow DAG that transforms data from Origin Sakila Schema to your new Star Schema that runs daily.](#from-the-star-schema-that-you-created-in-no-1-please-create-an-airflow-dag-that-transforms-data-from-origin-sakila-schema-to-your-new-star-schema-that-runs-daily)
+
+3. [Please create a step by step comment of your dags in your python scripts and why you choose a certain approach from table creation to table insertion.](#from-the-star-schema-that-you-created-in-no-1-please-create-an-airflow-dag-that-transforms-data-from-origin-sakila-schema-to-your-new-star-schema-that-runs-daily)
+
+4. [Create sample queries that demonstrate the difference between origin schema vs star schema for the same output.](#create-sample-queries-that-demonstrate-the-difference-between-origin-schema-vs-star-schema-for-the-same-output)
+
+5. [Create the Data Warehouse Architecture.](#create-the-data-warehouse-architecture)
+
+6. [Create Data Visualization based on the created Star Schema.](#create-data-visualization-based-on-the-created-star-schema)
+
+# Answer
+
+## Use the data source above, please create a Star schema of the Origin Sakila Database.
+
+![Alt text](images/erd.JPG?raw=true "Title")
+
+## From the star schema that you created in no 1, please create an airflow DAG that transforms data from Origin Sakila Schema to your new Star Schema that runs daily.
+
+[airflow code](airflow/)
+
+## Please create a step by step comment of your dags in your python scripts and why you choose a certain approach from table creation to table insertion.
+
+The explanation of the Airflow's DAGs are explained in the DAGs itself and also here [Airflow README.md](airflow/README.md)
+
+##  Create sample queries that demonstrate the difference between origin schema vs star schema for the same output.
 
 Let's say we need to find out:
 1. __Total sales for each film category.__
@@ -46,7 +73,7 @@ Let's say we need to find out:
 
     With the origin schema there are 7 tables that need to be joined, and the analyst also has to understand the relationship for each of the tables. On star schema the analyst can easily do the same thing with only 2 tables which make it easier and should also improve the query performance.
 
-2. Average Rental Duration for Each Film Category
+2. __Average Rental Duration for Each Film Category__
 
     Origin Schema:
     ```sql
@@ -86,11 +113,11 @@ Let's say we need to find out:
     ```
     With the star schema the query is more straightforward so the analyst can focus to generate insights.
 
-# Create the Data Warehouse Architecture
+## Create the Data Warehouse Architecture
 
 ![Alt text](images/pipeline.JPG?raw=true "Title")
 
-This data pipeline starts with Debezium as the Change Data Capture mechanism to capture real-time changes from source databases like MySQL and Postgres (C), and streaming them to Google Cloud Pub/Sub. 
+This data pipeline starts with Debezium as the Change Data Capture mechanism to capture real-time changes from source databases like MySQL and Postgres, and streaming them to Google Cloud Pub/Sub. 
 
 A Python subscriber service then consumes these changes and inserts the raw data to the data lake (BigQuery). It follows the ELT approach where unprocessed data is stored on a single place and will be transformed after.
 
@@ -99,3 +126,5 @@ Apache Airflow will be used to integrate data from additional sources. The data 
 Apache Airflow also will be used to create the dim/fact tables to support analytics need.
 
 The visualization or reporting tool will use Metabase, as it has a good integration with BigQuery.
+
+## Create Data Visualization based on the created Star Schema
