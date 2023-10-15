@@ -27,7 +27,11 @@ def plot_weekly_rental_trends():
 
     df = get_data(query)
     df['rental_week_start'] = pd.to_datetime(df['rental_date']) - pd.to_timedelta(pd.to_datetime(df['rental_date']).dt.dayofweek, unit='D')
-    df = df.groupby('rental_week_start').sum().reset_index()
+    try:
+        df = df.groupby('rental_week_start').sum().reset_index()
+    except TypeError:
+        TypeError("Can't be run with pandas > 1.5.3")
+        
     df = df.query('rental_week_start != "2006-02-13"')
 
     plt.figure(figsize=(10, 4)) 
