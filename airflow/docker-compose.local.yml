@@ -27,6 +27,7 @@ services:
       - sakila-db-volume:/var/lib/mysql
     ports:
       - 3308:3306
+    restart: always
 volumes:
   postgres-db-volume:
   sakila-db-volume:
