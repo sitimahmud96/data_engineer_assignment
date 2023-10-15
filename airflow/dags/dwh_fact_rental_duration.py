@@ -25,7 +25,7 @@ default_args = {
 
 # Define the DAG
 with DAG(DAG_ID, 
-          schedule_interval='@daily',
+          schedule_interval='0 1 * * *',
           start_date=datetime(2023, 6, 19), 
           catchup=False,
           default_args=default_args) as dag:
@@ -37,13 +37,13 @@ with DAG(DAG_ID,
     create_table = MySqlOperator(
         task_id="create_table",
         mysql_conn_id=con,
-        sql='/sql/dim_customer/create_table.sql'
+        sql='/sql/fact_rental_duration/create_table.sql'
     )
 
     ingest_data = MySqlOperator(
         task_id="ingest_data",
         mysql_conn_id=con,
-        sql='/sql/dim_customer/transformation.sql'
+        sql='/sql/fact_rental_duration/transformation.sql'
     )
     
     t3 = DummyOperator(task_id="end")    

@@ -25,14 +25,12 @@ default_args = {
 
 # Define the DAG
 with DAG(DAG_ID, 
-          schedule_interval='@daily',
+          schedule_interval='0 1 * * *',
           start_date=datetime(2023, 6, 19), 
           catchup=False,
           default_args=default_args) as dag:
-    # from airflow.providers.postgres.hooks.postgres import PostgresHook
-    # client_snaporder = PostgresHook('sb_snaporder').get_sqlalchemy_engine()	
 
-    con = 'coba'
+    con = 'SAKILA_MYSQL'
 
     t1 = DummyOperator(task_id="start")
 

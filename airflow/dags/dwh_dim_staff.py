@@ -30,7 +30,7 @@ with DAG(DAG_ID,
           catchup=False,
           default_args=default_args) as dag:
 
-    con = 'coba'
+    con = 'SAKILA_MYSQL'
 
     t1 = DummyOperator(task_id="start")
 
