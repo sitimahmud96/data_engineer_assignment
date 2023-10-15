@@ -15,7 +15,7 @@ Tasks:
 
 ## Use the data source above, please create a Star schema of the Origin Sakila Database.
 
-![Alt text](images/erd.JPG?raw=true "Title")
+![Alt text](images/erd.jpg?raw=true "Title")
 
 ## From the star schema that you created in no 1, please create an airflow DAG that transforms data from Origin Sakila Schema to your new Star Schema that runs daily.
 
@@ -115,7 +115,7 @@ Let's say we need to find out:
 
 ## Create the Data Warehouse Architecture
 
-![Alt text](images/pipeline.JPG?raw=true "Title")
+![Alt text](images/pipeline.jpg?raw=true "Title")
 
 This data pipeline starts with Debezium as the Change Data Capture mechanism to capture real-time changes from source databases like MySQL and Postgres, and streaming them to Google Cloud Pub/Sub. 
 
@@ -128,3 +128,10 @@ Apache Airflow also will be used to create the dim/fact tables to support analyt
 The visualization or reporting tool will use Metabase, as it has a good integration with BigQuery.
 
 ## Create Data Visualization based on the created Star Schema
+
+1. Weekly Rental Trends
+    
+   Number of rentals aggregated weekly
+   ![Alt text](images/rental_trends.jpeg?raw=true "Title")
+
+2. 
